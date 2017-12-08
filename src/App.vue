@@ -1,23 +1,35 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div>
+    <app-header></app-header>
+    <section class="main-section section">
+      <div class="container content">
+        <router-view></router-view>
+      </div>
+    </section>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import AppHeader from './components/AppHeader.vue'
+  import AppFooter from './components/AppFooter.vue'
+
+  export default {
+    name: 'app',
+    components: {
+      'app-header': AppHeader,
+      'app-footer': AppFooter
+    }
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang='scss'>
+  @import '~bulma';
+  $primary: #287ab1;
+
+  .columns {
+    flex-wrap: wrap
+  }
 </style>
+
+
