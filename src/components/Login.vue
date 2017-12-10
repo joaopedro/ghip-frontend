@@ -1,55 +1,44 @@
 <template>
-  <div class="content">
-    <div v-if='isAuthenticated'>
-      Hello Authenticated User!
-      <button v-on:click='logout()' class="button is-primary">
-      Logout
-      </button>
-    </div>
-    <div v-else>
-      <h2>Login</h2>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Username</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-          <div class="control">
-            <input class="input" type="text"
-            v-model='username' placeholder="Your username">
+    <section class="hero is-success is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-4 is-offset-4">
+          <h3 class="title has-text-grey">Login</h3>
+          <p class="subtitle has-text-grey">Please login to proceed.</p>
+          <div class="box">
+            <figure class="avatar">
+              <img src="https://placehold.it/128x128">
+            </figure>
+            <form>
+              <div class="field">
+                <div class="control">
+                  <input class="input is-large" type="email" placeholder="Your Email" autofocus="">
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <input class="input is-large" type="password" placeholder="Your Password">
+                </div>
+              </div>
+              <div class="field">
+                <label class="checkbox">
+                  <input type="checkbox">
+                  Remember me
+                </label>
+              </div>
+              <a class="button is-block is-info is-large">Login</a>
+            </form>
           </div>
-          </div>
-        </div>
-      </div>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Password</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-          <div class="control">
-            <input class="input" type="password"
-            v-model='password' placeholder="Your password">
-          </div>
-          </div>
-        </div>
-      </div>
-      <div class="field is-horizontal">
-        <div class="field-label">
-          <!-- Left empty for spacing -->
-        </div>
-        <div class="field-body">
-          <div class="field">
-          <div class="control">
-            <button v-on:click='login()' v-on:keyup='login()' class="button is-primary default">
-            Login
-            </button>
-          </div>
-          </div>
+          <p class="has-text-grey">
+            <a href="../">Sign Up</a> &nbsp;·&nbsp;
+            <a href="../">Forgot Password</a> &nbsp;·&nbsp;
+            <a href="../">Need Help?</a>
+          </p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
@@ -75,4 +64,41 @@ export default {
   }
 }
 </script>
+<style lang='scss' scoped>
+  html,body {
+    font-family: 'Open Sans', serif;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  .hero.is-success {
+    background: #F2F6FA;
+  }
+  .hero .nav, .hero.is-success .nav {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .box {
+    margin-top: 5rem;
+  }
+  .avatar {
+    margin-top: -70px;
+    padding-bottom: 20px;
+  }
+  .avatar img {
+    padding: 5px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  }
+  input {
+    font-weight: 300;
+  }
+  p {
+    font-weight: 700;
+  }
+  p.subtitle {
+    padding-top: 1rem;
+  }
+</style>
 
