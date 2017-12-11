@@ -35,31 +35,20 @@ const store = new Vuex.Store({
   mutations: {
     logout (state) {
       if (typeof window !== 'undefined') {
-        window.localStorage.removeItem('token')
-        window.localStorage.removeItem('tokenExpiration')
+        window.localStorage.removeItem('acessToken')
+        window.localStorage.removeItem('expiresIn')
       }
       state.isAuthenticated = false
     },
     login (state, token) {
       if (typeof window !== 'undefined') {
-        window.localStorage.setItem('token', token.token)
-        window.localStorage.setItem('tokenExpiration', token.expiration)
+        window.localStorage.setItem('acessToken', token.acessToken)
+        window.localStorage.setItem('expiresIn', token.expiresIn)
       }
       state.isAuthenticated = true
     }
 
   }
 })
-
-if (typeof window !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', function (event) {
-    let expiration = window.localStorage.getItem('tokenExpiration')
-    var unixTimestamp = new Date().getTime() / 1000
-
-    if (expiration !== null && parseInt(expiration) - unixTimestamp > 0) {
-      store.state.isAuthenticated = true
-    }
-  })
-}
 
 export default store

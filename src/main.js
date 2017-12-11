@@ -7,11 +7,22 @@ import store from './vuex/index'
 
 Vue.config.productionTip = false
 
+if (typeof window !== 'undefined') {
+  let expiresAt = new Date(parseInt(window.localStorage.getItem('expiresIn')))
+  var currentDate = new Date()
+
+  if (expiresAt !== null && expiresAt > currentDate) {
+    store.state.isAuthenticated = true
+  }
+}
+
 /* eslint-disable no-new */
-new Vue({
+const app = new Vue({
   el: '#app',
   router,
   store,
   template: '<App/>',
   components: { App }
 })
+
+export {app, router, store}

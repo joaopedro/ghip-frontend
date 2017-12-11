@@ -1,6 +1,12 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://api.fullstackweekly.com'
+// axios.defaults.baseURL = 'https://aaa-node.herokuapp.com'
+axios.defaults.baseURL = 'http://localhost:9090'
+
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
+axios.defaults.headers.post['Accept'] = 'application/json, text/plain, */*'
+axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, Authorization, Access-Control-Allow-Origin'
 
 axios.interceptors.request.use(function (config) {
   if (window === 'undefined') {
@@ -15,17 +21,9 @@ axios.interceptors.request.use(function (config) {
 })
 
 const appService = {
-  getPosts (categoryId) {
+  getUsers () {
     return new Promise((resolve) => {
-      axios.get(`/wp-json/wp/v2/posts?categories=${categoryId}&per_page=6`)
-        .then(response => {
-          resolve(response.data)
-        })
-    })
-  },
-  getProfile () {
-    return new Promise((resolve) => {
-      axios.get('/services/profile.php')
+      axios.get('/users')
         .then(response => {
           resolve(response.data)
         })
@@ -33,7 +31,7 @@ const appService = {
   },
   login (credentials) {
     return new Promise((resolve, reject) => {
-      axios.post('/services/auth.php', credentials)
+      axios.post('/token/generate', credentials)
         .then(response => {
           resolve(response.data)
         }).catch(response => {

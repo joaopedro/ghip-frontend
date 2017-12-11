@@ -7,18 +7,20 @@
           <p class="subtitle has-text-grey">Please login to proceed.</p>
           <div class="box">
             <figure class="avatar">
-              <img src="https://placehold.it/128x128">
+              <img src="../assets/logo.png">
             </figure>
             <form>
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="email" placeholder="Your Email" autofocus="">
+                  <input class="input is-large" type="email" placeholder="Your Email" autofocus=""
+                    v-model="username">
                 </div>
               </div>
 
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="password" placeholder="Your Password">
+                  <input class="input is-large" type="password" placeholder="Your Password"
+                    v-model="password">
                 </div>
               </div>
               <div class="field">
@@ -27,7 +29,7 @@
                   Remember me
                 </label>
               </div>
-              <a class="button is-block is-info is-large">Login</a>
+              <a class="button is-block is-info is-large" v-on:click="login()">Login</a>
             </form>
           </div>
           <p class="has-text-grey">
@@ -59,6 +61,7 @@ export default {
         .then(() => {
           this.username = ''
           this.password = ''
+          this.$router.replace('/')
         })
     }
   }

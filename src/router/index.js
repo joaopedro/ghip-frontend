@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Initial from '@/components/Initial'
 import Login from '@/components/Login'
 import FullLayout from '@/components/FullLayout'
+import { store } from '@/main'
 
 Vue.use(Router)
 
@@ -29,8 +30,12 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log('Check if AUthenticated and in not redirect to Login!!!!')
-  next()
+//  TODO: Cache a boolean to determine if we came from the application and in that case do a back after a login.
+  if (store.getters.isAuthenticated || to.path === '/login') {
+    next()
+  } else {
+    router.push('/login')
+  }
 })
 
 export default router
