@@ -13,14 +13,14 @@
               <div class="field">
                 <div class="control">
                   <input class="input is-large" type="email" placeholder="Your Email" autofocus=""
-                    v-model="username">
+                    v-model="username" v-on:keydown.enter.prevent='login'>
                 </div>
               </div>
 
               <div class="field">
                 <div class="control">
                   <input class="input is-large" type="password" placeholder="Your Password"
-                    v-model="password">
+                    v-model="password" v-on:keydown.enter.prevent='login'>
                 </div>
               </div>
               <div class="field">
@@ -29,11 +29,11 @@
                   Remember me
                 </label>
               </div>
+              <button type="submit" class="is-hidden" ></button>
               <a class="button is-block is-info is-large" v-on:click="login()">Login</a>
             </form>
           </div>
           <p class="has-text-white">
-            <a href="../">Sign Up</a> &nbsp;·&nbsp;
             <a href="../">Forgot Password</a> &nbsp;·&nbsp;
             <a href="../">Need Help?</a>
           </p>
