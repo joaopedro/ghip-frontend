@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Initial from '@/components/Initial'
+import ListUsers from '@/components/ListUsers'
 import Login from '@/components/Login'
 import FullLayout from '@/components/FullLayout'
 import { store } from '@/main'
@@ -21,10 +22,15 @@ const router = new Router({
       children: [
         {
           path: 'init',
-          alias: '',
           component: Initial,
           name: 'Initial',
           meta: {description: 'Initial GHIP Page'}
+        },
+        {
+          path: 'listusers',
+          component: ListUsers,
+          name: 'ListUsers',
+          meta: {description: 'List the Users'}
         }]
     }]
 })

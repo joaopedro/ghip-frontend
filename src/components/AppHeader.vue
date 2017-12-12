@@ -14,12 +14,12 @@
           </div>
           <div id="navbarMenu" class="navbar-menu">
             <div class="navbar-end">
-              <a class="navbar-item is-active">
+              <router-link to="/init" class="navbar-item is-active" exact>
                 Home
-              </a>
-              <a class="navbar-item">
+              </router-link>
+              <router-link to="/listusers" class="navbar-item">
                 Users
-              </a>
+              </router-link>
               <span class="navbar-item">
                 <button v-on:click='logout()' class="button is-white is-outlined">
                   <span>Logout</span>

@@ -61,7 +61,7 @@ export default {
         .then(() => {
           this.username = ''
           this.password = ''
-          this.$router.replace('/')
+          this.$router.replace('/init')
         })
     }
   }
