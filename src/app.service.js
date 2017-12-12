@@ -38,6 +38,11 @@ const appService = {
           reject(response.status)
         })
     })
+  },
+  revokeToken (tokenId) {
+    axios.post(`/token/invalidate/${tokenId}`)
+      .then(() => console.info('token invalidated successfully.'))
+      .catch(() => console.error('Unable to Invalidate token.'))
   }
 }
 

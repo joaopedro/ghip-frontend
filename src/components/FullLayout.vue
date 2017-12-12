@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <app-header></app-header>
-    <section class="main-section section">
-      <div class="container content">
+  <section class="hero is-info is-fullheight">
+      <app-header></app-header>
+      <div class="hero-body">
         <router-view></router-view>
       </div>
-    </section>
     <app-footer></app-footer>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -24,10 +22,25 @@
 </script>
 
 <style lang='scss'>
-/*   @import '~bulma';
-  $primary: #287ab1;
-
-  .columns {
-    flex-wrap: wrap
-  } */
+  html,body {
+    font-family: 'Open Sans', serif;
+  }
+  .hero.is-info {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ), url('https://unsplash.it/1200/900?random') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .hero .nav, .hero.is-success .nav {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .hero .subtitle {
+    padding: 3rem 0;
+    line-height: 1.5;
+  }
 </style>

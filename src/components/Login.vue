@@ -1,10 +1,10 @@
 <template>
-    <section class="hero is-success is-fullheight">
+    <section class="hero is-info is-fullheight">
     <div class="hero-body">
       <div class="container has-text-centered">
         <div class="column is-4 is-offset-4">
-          <h3 class="title has-text-grey">Login</h3>
-          <p class="subtitle has-text-grey">Please login to proceed.</p>
+          <h3 class="title has-text-white">Login</h3>
+          <p class="subtitle has-text-white">Please login to proceed.</p>
           <div class="box">
             <figure class="avatar">
               <img src="../assets/logo.png">
@@ -32,7 +32,7 @@
               <a class="button is-block is-info is-large" v-on:click="login()">Login</a>
             </form>
           </div>
-          <p class="has-text-grey">
+          <p class="has-text-white">
             <a href="../">Sign Up</a> &nbsp;·&nbsp;
             <a href="../">Forgot Password</a> &nbsp;·&nbsp;
             <a href="../">Need Help?</a>
@@ -73,9 +73,21 @@ export default {
     font-size: 14px;
     font-weight: 300;
   }
+
   .hero.is-success {
     background: #F2F6FA;
   }
+  .hero.is-info {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ), url('https://unsplash.it/1200/900?random') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
   .hero .nav, .hero.is-success .nav {
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -103,5 +115,6 @@ export default {
   p.subtitle {
     padding-top: 1rem;
   }
+
 </style>
 

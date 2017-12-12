@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import appService from '../app.service'
+import { router } from '@/main'
 
 Vue.use(Vuex)
 
@@ -35,13 +36,18 @@ const store = new Vuex.Store({
   mutations: {
     logout (state) {
       if (typeof window !== 'undefined') {
+        var tokenId = window.localStorage.getItem('tokenId')
         window.localStorage.removeItem('acessToken')
         window.localStorage.removeItem('expiresIn')
+        window.localStorage.removeItem('tokenId')
+        appService.revokeToken(tokenId)
+        router.push('/login')
       }
       state.isAuthenticated = false
     },
     login (state, token) {
       if (typeof window !== 'undefined') {
+        window.localStorage.setItem('tokenId', token.tokenId)
         window.localStorage.setItem('acessToken', token.acessToken)
         window.localStorage.setItem('expiresIn', token.expiresIn)
       }
