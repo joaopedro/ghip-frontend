@@ -57,12 +57,14 @@ export default {
   methods: {
     ...mapActions(['logout']),
     login () {
+      var button = document.querySelector('.button')
+      button.classList.toggle('is-loading')
       this.$store.dispatch('login', {username: this.username, password: this.password})
         .then(() => {
           this.username = ''
           this.password = ''
           this.$router.replace('/init')
-        })
+        }).catch((data) => button.classList.toggle('is-loading'))
     }
   }
 }

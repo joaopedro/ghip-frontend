@@ -32,14 +32,15 @@ const store = new Vuex.Store({
       context.commit('logout', context.getters.tokenId)
     },
     login (context, credentials) {
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         appService.login(credentials)
           .then((data) => {
             context.commit('login', data)
             resolve()
           })
-          .catch(() => {
+          .catch((data) => {
             window.alert('Could not Login!')
+            reject(data)
           })
       })
     },

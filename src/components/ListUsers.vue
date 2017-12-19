@@ -4,7 +4,7 @@
       <h2 class="title">
         Application Users
       </h2>
-      <table class="table">
+      <table class="table is-bordered is-striped is-fullwidth is-hoverable">
         <thead>
           <tr>
             <th><abbr title="email">Email</abbr></th>
