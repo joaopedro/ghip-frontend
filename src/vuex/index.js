@@ -2,11 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import appService from '../app.service'
 import { router } from '@/main'
+import decode from 'jwt-decode'
 
 Vue.use(Vuex)
 
 const state = {
-  isAuthenticated: false
+  isAuthenticated: false,
+  decodedToken: {}
 }
 
 const store = new Vuex.Store({
@@ -14,11 +16,20 @@ const store = new Vuex.Store({
   getters: {
     isAuthenticated: (state) => {
       return state.isAuthenticated
+    },
+    decodedToken: (state) => {
+      return state.decodedToken
+    },
+    tokenId: (state) => {
+      return state.decodedToken.jti
+    },
+    userGivenName: (state) => {
+      return state.decodedToken.given_name
     }
   },
   actions: {
     logout (context) {
-      context.commit('logout')
+      context.commit('logout', context.getters.tokenId)
     },
     login (context, credentials) {
       return new Promise((resolve) => {
@@ -31,15 +42,16 @@ const store = new Vuex.Store({
             window.alert('Could not Login!')
           })
       })
+    },
+    parseToken (context, data) {
+      context.commit('parseToken', data)
     }
   },
   mutations: {
-    logout (state) {
+    logout (state, tokenId) {
       if (typeof window !== 'undefined') {
-        var tokenId = window.localStorage.getItem('tokenId')
         window.localStorage.removeItem('acessToken')
         window.localStorage.removeItem('expiresIn')
-        window.localStorage.removeItem('tokenId')
         appService.revokeToken(tokenId)
         router.push('/login')
       }
@@ -47,10 +59,14 @@ const store = new Vuex.Store({
     },
     login (state, token) {
       if (typeof window !== 'undefined') {
-        window.localStorage.setItem('tokenId', token.tokenId)
         window.localStorage.setItem('acessToken', token.acessToken)
         window.localStorage.setItem('expiresIn', token.expiresIn)
       }
+      state.decodedToken = decode(token.acessToken)
+      state.isAuthenticated = true
+    },
+    parseToken (state, token) {
+      state.decodedToken = decode(token)
       state.isAuthenticated = true
     }
 

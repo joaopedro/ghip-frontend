@@ -24,7 +24,12 @@
                   <div class="dropdown">
                     <div class="dropdown-trigger">
                       <button class='button is-white is-outlined' aria-haspopup='true' aria-controls='dropdown-menu'>
-                        <span>Admin</span>
+                        <span>
+                          <span class="icon">
+                            <i class="fa fa-user-o"></i>
+                          </span>
+                          &nbsp;{{userGivenName}}
+                        </span>
                         <span class='icon is-small'>
                           <i class='fa fa-angle-down' aria-hidden='true'></i>
                         </span>
@@ -71,19 +76,20 @@ export default {
     menu.removeEventListener('click', this.userMenu)
   },
   computed: {
-    ...mapGetters(['isAuthenticated'])
+    ...mapGetters(['isAuthenticated']),
+    ...mapGetters(['userGivenName'])
   },
   methods: {
     ...mapActions(['logout']),
     burgerMenu (event) {
-      event.stopPropagation();
+      event.stopPropagation()
       var burger = document.querySelector('.navbar-burger')
       var menu = document.querySelector('.navbar-menu')
       burger.classList.toggle('is-active')
       menu.classList.toggle('is-active')
     },
     userDropdownToggle (event) {
-      event.stopPropagation();
+      event.stopPropagation()
       var menu = document.querySelector('.dropdown')
       menu.classList.toggle('is-active')
     },
