@@ -7,7 +7,7 @@
     name: 'app'
   }
 </script>
-<style lang="sass">
-  @import '~bulma';
-</style>
+// <style lang="sass">
+//   @import '~bulma';
+// </style>
 

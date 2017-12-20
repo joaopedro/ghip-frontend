@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './vuex/index'
+import Buefy from 'buefy'
+import 'buefy/lib/buefy.css'
 
 Vue.config.productionTip = false
 
@@ -15,6 +17,8 @@ if (typeof window !== 'undefined') {
     store.dispatch('parseToken', window.localStorage.getItem('acessToken'))
   }
 }
+
+Vue.use(Buefy)
 
 /* eslint-disable no-new */
 const app = new Vue({
