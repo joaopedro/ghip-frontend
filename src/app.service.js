@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://aaa-node.herokuapp.com'
-// axios.defaults.baseURL = 'http://localhost:9090'
+// axios.defaults.baseURL = 'https://aaa-node.herokuapp.com'
+axios.defaults.baseURL = 'http://localhost:9090'
 
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
@@ -12,7 +12,7 @@ axios.interceptors.request.use(function (config) {
   if (window === 'undefined') {
     return config
   }
-  const token = window.localStorage.getItem('token')
+  const token = window.localStorage.getItem('acessToken')
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
@@ -22,10 +22,12 @@ axios.interceptors.request.use(function (config) {
 
 const appService = {
   getUsers () {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       axios.get('/users')
         .then(response => {
           resolve(response.data)
+        }).catch(response => {
+          reject(response.status)
         })
     })
   },

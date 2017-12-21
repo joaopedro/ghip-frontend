@@ -39,7 +39,6 @@ const store = new Vuex.Store({
             resolve()
           })
           .catch((data) => {
-            window.alert('Could not Login!')
             reject(data)
           })
       })
