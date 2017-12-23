@@ -18,7 +18,9 @@ if (typeof window !== 'undefined') {
   }
 }
 
-Vue.use(Buefy)
+Vue.use(Buefy, {
+  defaultIconPack: 'mdi'
+})
 
 /* eslint-disable no-new */
 const app = new Vue({
