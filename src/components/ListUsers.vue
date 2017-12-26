@@ -4,6 +4,14 @@
       <h2 class="title">
         Application Users
       </h2>
+      <button class="button is-primary is-medium"
+            @click="isUserModalActive = true">
+        <b-icon icon="user"></b-icon>
+        <span>New</span>
+      </button>
+      <b-modal :active.sync="isUserModalActive" has-modal-card>
+        <modal-form v-bind="formProps"></modal-form>
+      </b-modal>
       <b-table
         :data="users"
         :paginated="isPaginated"
@@ -39,18 +47,27 @@
 
 <script>
 import appService from '../app.service'
+import UserForm from './UserForm'
 
 export default {
   name: 'ListUsers',
+  components: {
+    'modal-form': UserForm
+  },
   data () {
     return {
+      isUserModalActive: false,
       isPaginated: true,
       loading: false,
       isPaginationSimple: false,
       defaultSortDirection: 'asc',
       currentPage: 1,
       perPage: 10,
-      users: []
+      users: [],
+      formProps: {
+        email: 'evan@you.com',
+        password: 'testing'
+      }
     }
   },
   methods: {
