@@ -2,42 +2,116 @@
   <form action="">
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Login</p>
+        <p class="modal-card-title">User</p>
       </header>
       <section class="modal-card-body">
-        <b-field label="Email">
+        <b-field>
+          <b-input
+            v-model="user.name"
+            placeholder="Name"
+            required>
+          </b-input>
+        </b-field>
+        <b-field>
           <b-input
             type="email"
-            v-model="email"
-            placeholder="Your email"
+            v-model="user.email"
+            placeholder="Email"
+            maxlength="30"
             required>
           </b-input>
         </b-field>
-
-        <b-field label="Password">
+        <b-field>
+          <b-input
+            type="username"
+            v-model="user.username"
+            placeholder="Username"
+            required
+            maxlength="30">
+          </b-input>
+        </b-field>
+        <b-field>
           <b-input
             type="password"
-            v-model="password"
-            password-reveal
+            v-model="user.password"
             placeholder="Your password"
+            password-reveal
             required>
           </b-input>
         </b-field>
-
-        <b-checkbox>Remember me</b-checkbox>
+        <b-field>
+          <b-input
+            type="password"
+            v-model="user.passwordConfirmation"
+            placeholder="Confirm Your password"
+            required>
+          </b-input>
+        </b-field>
+        <b-field>
+          <b-taginput
+            v-model="user.roles"
+            :data="availableRoles"
+            autocomplete
+            field="name"
+            icon="label"
+            placeholder="Add a Role"
+            @typing="getAvailableRoles">
+          </b-taginput>
+        </b-field>
+        <b-field>
+          <b-input type="textarea"
+            v-model="comment"
+              maxlength="100"
+            placeholder="comment on the user">
+          </b-input>
+        </b-field>
       </section>
       <footer class="modal-card-foot">
         <button class="button" type="button" @click="$parent.close()">Close</button>
-        <button class="button is-primary">Login</button>
+        <button class="button is-primary" @click="createUser">Login</button>
       </footer>
     </div>
   </form>
 </template>
+
 <script>
-export default {
-  name: 'UserForm',
-  props: ['email', 'password']
-}
+  import appService from '../app.service'
+
+  export default {
+    name: 'UserForm',
+    data () {
+      return {
+        user: {
+          name: '',
+          email: '',
+          username: '',
+          password: '',
+          passwordConfirmation: '',
+          roles: [],
+          comment: ''
+        },
+        availableRoles: [
+          {id: 1, name: 'ADMIN'},
+          {id: 2, name: 'USER'}
+        ]
+      }
+    },
+    methods: {
+      getFilteredTags(text) {
+        this.availableRoles = data.filter((option) => {
+          return option.name
+            .toString()
+            .toLowerCase()
+            .indexOf(text.toLowerCase()) >= 0
+        })
+      },
+      createUser() {
+        console.debug('creating user ->' + this.user)
+        console.debug(this.user)
+        appService.createUser(this.user)
+      }
+    }
+  }
 </script>
 <style scoped>
   .modal-card {

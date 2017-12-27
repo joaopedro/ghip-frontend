@@ -41,6 +41,16 @@ const appService = {
         })
     })
   },
+  createUser (user) {
+    return new Promise((resolve, reject) => {
+      axios.post('/users', user)
+        .then(response => {
+          resolve(response.data)
+        }).catch(response => {
+          reject(response.status)
+        })
+    })
+  },
   revokeToken (tokenId) {
     axios.post(`/token/invalidate/${tokenId}`)
       .then(() => console.info('token invalidated successfully.'))

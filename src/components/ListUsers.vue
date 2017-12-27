@@ -22,8 +22,12 @@
         default-sort="email">
 
         <template slot-scope="user">
-          <b-table-column field="email" label="Email" sortable>
+          <b-table-column field="username" label="Username" sortable>
             {{ user.row.username}}
+          </b-table-column>
+
+          <b-table-column field="email" label="Email" sortable>
+            {{ user.row.email}}
           </b-table-column>
 
           <b-table-column field="name" label="Name" sortable>
