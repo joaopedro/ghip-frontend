@@ -60,7 +60,7 @@
         </b-field>
         <b-field>
           <b-input type="textarea"
-            v-model="comment"
+            v-model="user.comment"
               maxlength="100"
             placeholder="comment on the user">
           </b-input>
@@ -68,7 +68,7 @@
       </section>
       <footer class="modal-card-foot">
         <button class="button" type="button" @click="$parent.close()">Close</button>
-        <button class="button is-primary" @click="createUser">Login</button>
+        <button class="button is-primary" @click="createUser">Create</button>
       </footer>
     </div>
   </form>
@@ -93,19 +93,20 @@
         availableRoles: [
           {id: 1, name: 'ADMIN'},
           {id: 2, name: 'USER'}
-        ]
+        ],
+        filteredRoles: this.availableRoles
       }
     },
     methods: {
-      getFilteredTags(text) {
-        this.availableRoles = data.filter((option) => {
+      getFilteredTags   (text) {
+        this.availableRoles = this.availableRoles.filter((option) => {
           return option.name
             .toString()
             .toLowerCase()
             .indexOf(text.toLowerCase()) >= 0
         })
       },
-      createUser() {
+      createUser () {
         console.debug('creating user ->' + this.user)
         console.debug(this.user)
         appService.createUser(this.user)
