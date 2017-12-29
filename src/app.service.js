@@ -45,7 +45,7 @@ const appService = {
     return new Promise((resolve, reject) => {
       axios.post('/users', user)
         .then(response => {
-          resolve(response.data)
+          resolve(response)
         }).catch(response => {
           reject(response.status)
         })

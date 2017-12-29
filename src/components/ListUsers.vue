@@ -6,10 +6,11 @@
       </h2>
       <button class="button is-primary is-medium"
             @click="isUserModalActive = true">
-        <b-icon icon="user"></b-icon>
+        <b-icon icon="account-plus"
+                size="is-small"></b-icon>
         <span>New</span>
       </button>
-      <b-modal :active.sync="isUserModalActive" has-modal-card>
+      <b-modal :active.sync="isUserModalActive" @loadUsers='loadUsers'>
         <modal-form v-bind="formProps"></modal-form>
       </b-modal>
       <b-table
@@ -78,6 +79,7 @@ export default {
     loadUsers () {
       this.loading = true
       appService.getUsers().then((data) => {
+        this.users = []
         data.forEach((item) => this.users.push(item))
       }).catch((data) => {
         console.debug(data)

@@ -68,7 +68,7 @@
       </section>
       <footer class="modal-card-foot">
         <button class="button" type="button" @click="$parent.close()">Close</button>
-        <button class="button is-primary" @click="createUser">Create</button>
+        <button class="create-button button is-primary" @click="createUser">Create</button>
       </footer>
     </div>
   </form>
@@ -109,7 +109,20 @@
       createUser () {
         console.debug('creating user ->' + this.user)
         console.debug(this.user)
+        var button = document.querySelector('.create-button')
+        button.classList.toggle('is-loading')
         appService.createUser(this.user)
+        .then(() => {
+          button.classList.toggle('is-loading')
+          this.$parent.$emit('loadUsers')
+          this.$parent.close()
+        }).catch((data) => {
+          button.classList.toggle('is-loading')
+          this.$toast.open({
+            message: `Could create user! : ${data}`,
+            type: 'is-danger'
+          })
+        })
       }
     }
   }
