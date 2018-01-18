@@ -43,4 +43,7 @@
     padding: 3rem 0;
     line-height: 1.5;
   }
+  .hero-body {
+    align-items: normal !important;
+  }
 </style>

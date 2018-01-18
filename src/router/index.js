@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Initial from '@/components/Initial'
-import ListUsers from '@/components/ListUsers'
 import Login from '@/components/Login'
 import FullLayout from '@/components/FullLayout'
 import { store } from '@/main'
+import AccessManagment from '@/components/accessmanagement/AccessManagement'
 
 Vue.use(Router)
 
 const router = new Router({
+  linkActiveClass: 'is-active',
   routes: [
     {
       path: '/login',
@@ -26,10 +27,10 @@ const router = new Router({
           meta: {description: 'Initial GHIP Page'}
         },
         {
-          path: 'listusers',
-          component: ListUsers,
-          name: 'ListUsers',
-          meta: {description: 'List the Users'}
+          path: 'accessmanagement',
+          component: AccessManagment,
+          name: 'AccessManagment',
+          meta: {description: 'Managing security entities'}
         }]
     }]
 })

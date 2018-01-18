@@ -14,11 +14,11 @@
           </div>
           <div id='navbarMenu' class='navbar-menu'>
             <div class='navbar-end'>
-              <router-link to='/init' class='navbar-item is-active' exact>
+              <router-link to='/init' class='navbar-item' exact>
                 Home
               </router-link>
-              <router-link to='/listusers' class='navbar-item'>
-                Users
+              <router-link to='/accessmanagement' class='navbar-item'>
+                Access Management
               </router-link>
                 <span class='navbar-item'>
                   <div class="dropdown">

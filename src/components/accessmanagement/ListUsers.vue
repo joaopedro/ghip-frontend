@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import appService from '../app.service'
+import appService from '@/app.service'
 import UserForm from './UserForm'
 
 export default {
