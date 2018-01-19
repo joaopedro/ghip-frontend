@@ -137,9 +137,9 @@
         })
       }
     },
-  mounted () {
-    this.loadRoles()
-  }
+    mounted () {
+      this.loadRoles()
+    }
   }
 </script>
 <style scoped>
