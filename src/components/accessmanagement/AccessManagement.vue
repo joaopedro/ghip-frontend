@@ -9,12 +9,7 @@
       </div>
       <div class="tab-panels">
         <ListUsers v-if="isActiveTab(0)"></ListUsers>
-        <div class="tab-panel" v-if="isActiveTab(1)">
-          <h2 class="title">
-            User Roles
-          </h2>
-          <h3>To Do!</h3>
-        </div>
+        <ListRoles v-if="isActiveTab(1)"></ListRoles>
         <div class="tab-panel" v-if="isActiveTab(2)">
           <h2 class="title">
             Asset Management
@@ -26,11 +21,13 @@
 </template>
 <script>
 import ListUsers from './ListUsers'
+import ListRoles from './ListRoles'
 
 export default {
   name: 'AccessManagement',
   components: {
-    'ListUsers': ListUsers
+    'ListUsers': ListUsers,
+    'ListRoles': ListRoles
   },
   data () {
     return {

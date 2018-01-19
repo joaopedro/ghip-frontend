@@ -49,13 +49,13 @@
         </b-field>
         <b-field>
           <b-taginput
-            v-model="user.roles"
-            :data="availableRoles"
+            v-model="user.authorities"
+            :data="filteredRoles"
             autocomplete
             field="name"
             icon="label"
             placeholder="Add a Role"
-            @typing="getAvailableRoles">
+            @typing="getfilteredRoles">
           </b-taginput>
         </b-field>
         <b-field>
@@ -87,19 +87,31 @@
           username: '',
           password: '',
           passwordConfirmation: '',
-          roles: [],
+          authorities: [],
           comment: ''
         },
-        availableRoles: [
-          {id: 1, name: 'ADMIN'},
-          {id: 2, name: 'USER'}
-        ],
+        availableRoles: [],
         filteredRoles: this.availableRoles
       }
     },
     methods: {
-      getFilteredTags   (text) {
-        this.availableRoles = this.availableRoles.filter((option) => {
+      loadRoles () {
+        this.loading = true
+        appService.getRoles().then((data) => {
+          this.roles = []
+          data.forEach((role) => this.availableRoles.push(role))
+        }).catch((data) => {
+          console.debug(data)
+          this.loading = true
+          this.$toast.open({
+            message: 'Could not load Roles!',
+            type: 'is-danger'
+          })
+          this.loading = false
+        })
+      },
+      getfilteredRoles (text) {
+        this.filteredRoles = this.availableRoles.filter((option) => {
           return option.name
             .toString()
             .toLowerCase()
@@ -124,7 +136,10 @@
           })
         })
       }
-    }
+    },
+  mounted () {
+    this.loadRoles()
+  }
   }
 </script>
 <style scoped>
