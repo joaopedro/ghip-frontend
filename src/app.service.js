@@ -41,6 +41,16 @@ const appService = {
         })
     })
   },
+  getAssets () {
+    return new Promise((resolve, reject) => {
+      axios.get('/assets')
+        .then(response => {
+          resolve(response.data)
+        }).catch(response => {
+          reject(response.status)
+        })
+    })
+  },
   login (credentials) {
     return new Promise((resolve, reject) => {
       axios.post('/token/generate', credentials)
@@ -64,6 +74,16 @@ const appService = {
   createRole (role) {
     return new Promise((resolve, reject) => {
       axios.post('/roles', role)
+        .then(response => {
+          resolve(response)
+        }).catch(response => {
+          reject(response.status)
+        })
+    })
+  },
+  createAsset (asset) {
+    return new Promise((resolve, reject) => {
+      axios.post('/assets', asset)
         .then(response => {
           resolve(response)
         }).catch(response => {

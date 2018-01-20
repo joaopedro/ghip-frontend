@@ -2,17 +2,17 @@
   <div class="container">
     <div >
       <h2 class="title">
-        Roles
+        Assets
       </h2>
       <button class="button is-primary is-medium"
-            @click="isRoleModalActive = true">
-        <span>New Role</span>
+            @click="isAssetModalActive = true">
+        <span>New Asset</span>
       </button>
-      <b-modal :active.sync="isRoleModalActive" @loadRoles='loadRoles'>
+      <b-modal :active.sync="isAssetModalActive" @loadAssets='loadAssets'>
         <modal-form v-bind="formProps"></modal-form>
       </b-modal>
       <b-table
-        :data="roles"
+        :data="assets"
         :paginated="isPaginated"
         :per-page="perPage"
         :current-page.sync="currentPage"
@@ -20,13 +20,13 @@
         :default-sort-direction="defaultSortDirection"
         default-sort="id">
 
-        <template slot-scope="role">
+        <template slot-scope="asset">
           <b-table-column field="id" label="Id" sortable>
-            {{ role.row.id}}
+            {{ asset.row.id}}
           </b-table-column>
 
           <b-table-column field="name" label="Name" sortable>
-            {{ role.row.name}}
+            {{ asset.row.name}}
           </b-table-column>
         </template>
       </b-table>
@@ -36,23 +36,23 @@
 
 <script>
 import appService from '@/app.service'
-import RoleForm from './RoleForm'
+import AssetForm from './AssetForm'
 
 export default {
-  name: 'ListUsers',
+  name: 'ListAssets',
   components: {
-    'modal-form': RoleForm
+    'modal-form': AssetForm
   },
   data () {
     return {
-      isRoleModalActive: false,
+      isAssetModalActive: false,
       isPaginated: true,
       loading: false,
       isPaginationSimple: false,
       defaultSortDirection: 'asc',
       currentPage: 1,
       perPage: 10,
-      roles: [],
+      assets: [],
       formProps: {
         email: 'evan@you.com',
         password: 'testing'
@@ -60,16 +60,16 @@ export default {
     }
   },
   methods: {
-    loadRoles () {
+    loadAssets () {
       this.loading = true
-      appService.getRoles().then((data) => {
-        this.roles = []
-        data.forEach((role) => this.roles.push(role))
+      appService.getAssets().then((data) => {
+        this.assets = []
+        data.forEach((asset) => this.assets.push(asset))
       }).catch((data) => {
         console.debug(data)
         this.loading = true
         this.$toast.open({
-          message: 'Could not load Roles!',
+          message: 'Could not load Assets!',
           type: 'is-danger'
         })
         this.loading = false
@@ -77,7 +77,7 @@ export default {
     }
   },
   mounted () {
-    this.loadRoles()
+    this.loadAssets()
   }
 }
 </script>
