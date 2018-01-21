@@ -9,7 +9,7 @@
         <span>New Role</span>
       </button>
       <b-modal :active.sync="isRoleModalActive" @loadRoles='loadRoles'>
-        <modal-form v-bind="formProps"></modal-form>
+        <modal-form />
       </b-modal>
       <b-table
         :data="roles"
@@ -18,7 +18,8 @@
         :current-page.sync="currentPage"
         :pagination-simple="isPaginationSimple"
         :default-sort-direction="defaultSortDirection"
-        default-sort="id">
+        default-sort="id"
+        detailed>
 
         <template slot-scope="role">
           <b-table-column field="id" label="Id" sortable>
@@ -28,6 +29,19 @@
           <b-table-column field="name" label="Name" sortable>
             {{ role.row.name}}
           </b-table-column>
+        </template>
+        <template slot="detail" slot-scope="role">
+          <div class="content">
+            <p v-if="role.row.assetAuthorities.length == 0">No Asset Associated yet</p>
+            <p v-if="role.row.assetAuthorities.length > 0">
+              <strong>Asset: </strong>
+              <small>{{ role.row.assetAuthorities[0].pk.authority.name }}</small>
+              <strong>Permissions: </strong>
+              <small>Read: </small><small>{{ role.row.assetAuthorities[0].read }}</small>
+              <small>Write: </small><small>{{ role.row.assetAuthorities[0].write }}</small>
+              <small>Delete: </small><small>{{ role.row.assetAuthorities[0].delete }}</small>
+            </p>
+          </div>
         </template>
       </b-table>
     </div>
@@ -52,11 +66,7 @@ export default {
       defaultSortDirection: 'asc',
       currentPage: 1,
       perPage: 10,
-      roles: [],
-      formProps: {
-        email: 'evan@you.com',
-        password: 'testing'
-      }
+      roles: []
     }
   },
   methods: {
