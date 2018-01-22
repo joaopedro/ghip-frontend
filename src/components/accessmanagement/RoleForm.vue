@@ -12,6 +12,35 @@
             required>
           </b-input>
         </b-field>
+        <b-field grouped>
+          <b-select placeholder="Select an Asset" v-model="asset">
+            <option
+              v-for="asset in availableAssets"
+              :value="asset.id"
+              :key="asset.id">
+              {{ asset.name }}
+            </option>
+          </b-select>
+          <b-checkbox-button v-model="permissions"
+                native-value="Read"
+                type="is-success">
+                <b-icon icon="check"></b-icon>
+                <span>Read</span>
+            </b-checkbox-button>
+          <b-checkbox-button v-model="permissions"
+                native-value="Write"
+                type="is-success">
+                <b-icon icon="check"></b-icon>
+                <span>Write</span>
+            </b-checkbox-button>
+          <b-checkbox-button v-model="permissions"
+                native-value="Delete"
+                type="is-success">
+                <b-icon icon="check"></b-icon>
+                <span>Delete</span>
+          </b-checkbox-button>
+          <button class="button is-info" type="button" @click='addAsset()'>Add</button>
+        </b-field>
       </section>
       <footer class="modal-card-foot">
         <button class="button" type="button" @click="$parent.close()">Close</button>
@@ -28,9 +57,13 @@
     name: 'RoleForm',
     data () {
       return {
+        loading: false,
         role: {
           name: ''
-        }
+        },
+        availableAssets: [],
+        permissions: [],
+        asset: null
       }
     },
     methods: {
@@ -51,7 +84,25 @@
             type: 'is-danger'
           })
         })
+      },
+      loadAssets () {
+        this.loading = true
+        appService.getAssets().then((data) => {
+          this.availableAssets = []
+          data.forEach((item) => this.availableAssets.push(item))
+        }).catch((data) => {
+          console.debug(data)
+          this.loading = true
+          this.$toast.open({
+            message: 'Could not load Assets!',
+            type: 'is-danger'
+          })
+          this.loading = false
+        })
       }
+    },
+    mounted () {
+      this.loadAssets()
     }
   }
 </script>
