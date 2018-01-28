@@ -35,7 +35,7 @@
             <p v-if="role.row.assetAuthorities.length == 0">No Asset Associated yet</p>
             <p v-if="role.row.assetAuthorities.length > 0">
               <strong>Asset: </strong>
-              <small>{{ role.row.assetAuthorities[0].pk.authority.name }}</small>
+              <small>{{ role.row.assetAuthorities[0].pk.asset.name }}</small>
               <strong>Permissions: </strong>
               <small>Read: </small><small>{{ role.row.assetAuthorities[0].read }}</small>
               <small>Write: </small><small>{{ role.row.assetAuthorities[0].write }}</small>
