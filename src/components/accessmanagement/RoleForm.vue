@@ -12,12 +12,20 @@
             required>
           </b-input>
         </b-field>
-        <b-field grouped>
-          <b-select placeholder="Select an Asset" v-model="asset">
+        <b-field>
+          <div class="button is-dark" @click="toggleAssetFormClicked()">
+              <b-icon icon="plus" v-if="!showAssetForm"></b-icon>
+              <b-icon icon="minus" v-if="showAssetForm"></b-icon>
+              <span>Asset</span>
+          </div>
+        </b-field>
+        <b-field grouped v-if="showAssetForm">
+          <b-select placeholder="Select an Asset" v-model="assetId">
             <option
               v-for="asset in availableAssets"
               :value="asset.id"
-              :key="asset.id">
+              :key="asset.id"
+              v-text="asset.name">
               {{ asset.name }}
             </option>
           </b-select>
@@ -41,6 +49,34 @@
           </b-checkbox-button>
           <button class="button is-info" type="button" @click='addAsset()'>Add</button>
         </b-field>
+        <b-table
+          :data="role.assetAuthorities"
+          :paginated="false"
+          :default-sort-direction="asc"
+          default-sort="asset.name">
+
+          <template slot-scope="assetAuthority">
+            <b-table-column field="asset.id" label="ID" sortable numeric>
+              {{ assetAuthority.row.pk.asset.id }}
+            </b-table-column>
+
+            <b-table-column field="asset.name" label="Name" sortable>
+              {{ assetAuthority.row.pk.asset.name }}
+            </b-table-column>
+
+            <b-table-column field="permissions" label="Permissions" sortable>
+              <span class="tag is-success" v-if="assetAuthority.row.read == true">
+                Read
+              </span>
+              <span class="tag is-success" v-if="assetAuthority.row.write == true">
+                Write
+              </span>
+              <span class="tag is-success" v-if="assetAuthority.row.delete == true">
+                Delete
+              </span>
+            </b-table-column>
+          </template>
+        </b-table>
       </section>
       <footer class="modal-card-foot">
         <button class="button" type="button" @click="$parent.close()">Close</button>
@@ -52,18 +88,21 @@
 
 <script>
   import appService from '@/app.service'
+  import _ from 'lodash'
 
   export default {
     name: 'RoleForm',
     data () {
       return {
+        showAssetForm: false,
         loading: false,
         role: {
-          name: ''
+          name: '',
+          assetAuthorities: []
         },
         availableAssets: [],
         permissions: [],
-        asset: null
+        assetId: null
       }
     },
     methods: {
@@ -99,6 +138,27 @@
           })
           this.loading = false
         })
+      },
+      addAsset () {
+        var asset = _.find(this.availableAssets, {id: this.assetId})
+        if (typeof asset !== 'undefined') {
+          _.remove(this.role.assetAuthorities, {pk: {asset: {id: asset.id}}})
+          this.role.assetAuthorities.push(
+              {
+                pk: {
+                    asset: asset,
+                    authority: {}
+                },
+                read: this.permissions.includes('Read'),
+                write: this.permissions.includes('Write'),
+                delete: this.permissions.includes('Delete')
+              }
+            )
+        }
+        console.debug(this.permissions.includes('Read'))
+      },
+      toggleAssetFormClicked () {
+        this.showAssetForm=(this.showAssetForm?false:true)
       }
     },
     mounted () {

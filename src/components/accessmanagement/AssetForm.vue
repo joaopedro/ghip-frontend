@@ -34,7 +34,7 @@
       }
     },
     methods: {
-      createRole () {
+      createAsset () {
         console.debug('creating asset ->' + this.asset)
         console.debug(this.asset)
         var button = document.querySelector('.create-button')
