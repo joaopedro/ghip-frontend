@@ -144,21 +144,21 @@
         if (typeof asset !== 'undefined') {
           _.remove(this.role.assetAuthorities, {pk: {asset: {id: asset.id}}})
           this.role.assetAuthorities.push(
-              {
-                pk: {
-                    asset: asset,
-                    authority: {}
-                },
-                read: this.permissions.includes('Read'),
-                write: this.permissions.includes('Write'),
-                delete: this.permissions.includes('Delete')
-              }
-            )
+            {
+              pk: {
+                asset: asset,
+                authority: {}
+              },
+              read: this.permissions.includes('Read'),
+              write: this.permissions.includes('Write'),
+              delete: this.permissions.includes('Delete')
+            }
+          )
         }
         console.debug(this.permissions.includes('Read'))
       },
       toggleAssetFormClicked () {
-        this.showAssetForm=(this.showAssetForm?false:true)
+        this.showAssetForm = !this.showAssetForm
       }
     },
     mounted () {
