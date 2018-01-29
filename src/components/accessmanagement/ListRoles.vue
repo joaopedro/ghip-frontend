@@ -33,13 +33,13 @@
         <template slot="detail" slot-scope="role">
           <div class="content">
             <p v-if="role.row.assetAuthorities.length == 0">No Asset Associated yet</p>
-            <p v-if="role.row.assetAuthorities.length > 0">
+            <p v-for="assetAuthority in role.row.assetAuthorities" v-bind:key="assetAuthority.pk.asset.id">
               <strong>Asset: </strong>
-              <small>{{ role.row.assetAuthorities[0].pk.asset.name }}</small>
+              <small>{{ assetAuthority.pk.asset.name }}</small>
               <strong>Permissions: </strong>
-              <small>Read: </small><small>{{ role.row.assetAuthorities[0].read }}</small>
-              <small>Write: </small><small>{{ role.row.assetAuthorities[0].write }}</small>
-              <small>Delete: </small><small>{{ role.row.assetAuthorities[0].delete }}</small>
+              <small>Read: </small><small>{{ assetAuthority.read }}</small>
+              <small>Write: </small><small>{{ assetAuthority.write }}</small>
+              <small>Delete: </small><small>{{ assetAuthority.delete }}</small>
             </p>
           </div>
         </template>
