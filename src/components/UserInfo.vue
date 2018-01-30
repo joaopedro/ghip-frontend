@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapGetters} from 'vuex'
+import {mapGetters} from 'vuex'
 import appService from '@/app.service'
 
 export default {
@@ -19,7 +19,8 @@ export default {
     return {
       user: {}
     }
-  },computed: {
+  },
+  computed: {
     ...mapGetters(['userUsername'])
   },
   methods: {
