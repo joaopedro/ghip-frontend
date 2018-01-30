@@ -31,6 +31,16 @@ const appService = {
         })
     })
   },
+  getUser (username) {
+    return new Promise((resolve, reject) => {
+      axios.get('/users/' + encodeURI(username))
+        .then(response => {
+          resolve(response.data)
+        }).catch(response => {
+          reject(response.status)
+        })
+    })
+  },
   getRoles () {
     return new Promise((resolve, reject) => {
       axios.get('/roles')

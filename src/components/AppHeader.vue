@@ -37,12 +37,9 @@
                     </div>
                     <div class='dropdown-menu' id='dropdown-menu' role='menu'>
                       <div class='dropdown-content '>
-                        <a class='dropdown-item has-text-black'>
+                        <router-link to='/userInfo' class='dropdown-item has-text-black'>
                           Details
-                        </a>
-                        <a class='dropdown-item has-text-black'>
-                          Permitions
-                        </a>
+                        </router-link>
                         <hr class='dropdown-divider'>
                         <a class='dropdown-item has-text-black' v-on:click='logout()'>
                           Logout

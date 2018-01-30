@@ -25,7 +25,11 @@ const store = new Vuex.Store({
     },
     userGivenName: (state) => {
       return state.decodedToken.given_name
+    },
+    userUsername: (state) => {
+      return state.decodedToken.sub
     }
+
   },
   actions: {
     logout (context) {

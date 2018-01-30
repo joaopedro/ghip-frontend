@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import FullLayout from '@/components/FullLayout'
 import { store } from '@/main'
 import AccessManagment from '@/components/accessmanagement/AccessManagement'
+import UserInfo from '@/components/UserInfo'
 
 Vue.use(Router)
 
@@ -31,6 +32,12 @@ const router = new Router({
           component: AccessManagment,
           name: 'AccessManagment',
           meta: {description: 'Managing security entities'}
+        },
+        {
+          path: 'userInfo',
+          component: UserInfo,
+          name: 'UserInfo',
+          meta: {description: 'Details user information'}
         }]
     }]
 })
