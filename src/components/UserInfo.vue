@@ -2,9 +2,18 @@
   <div class="container has-text-centered">
     <div class="column is-6 is-offset-3">
       <h1 class="title">
-        Coming Soon
+        Coming Soon - {{ $t("message.hello") }}
       </h1>
-      {{user}}
+      <div>
+        <select v-model="selectedLang" @click="changeLanguage()">
+          <option disabled value="">Please select one</option>
+          <option value="en">English</option>
+          <option value="pt">Portuguese</option>
+          <option value="jp">Japonese</option>
+        </select>
+        <span>Selected: {{ selectedLang }}</span>
+      </div>
+      <div>{{user}}</div>
     </div>
   </div>
 </template>
@@ -12,12 +21,13 @@
 <script>
 import {mapGetters} from 'vuex'
 import appService from '@/app.service'
-
+import {loadLanguageAsync, i18n} from '@/setup/i18n-setup.js'
 export default {
   name: 'UserInfo',
   data () {
     return {
-      user: {}
+      user: {},
+      selectedLang: ''
     }
   },
   computed: {
@@ -38,6 +48,9 @@ export default {
         })
         this.loading = false
       })
+    },
+    changeLanguage () {
+      loadLanguageAsync(this.selectedLang).then(() => console.debug(i18n.locale))
     }
   },
   mounted () {

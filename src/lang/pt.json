@@ -1,0 +1,8 @@
+{
+  "message": {
+    "hello": "Olá Mundo",
+    "hello123": "Olá",
+    "bye123": "Adeus",
+    "car": "carro | {count} carros"
+  }
+}

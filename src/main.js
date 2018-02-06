@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './vuex/index'
 import Buefy from 'buefy'
+import i18n from './setup/i18n-setup.js'
 import 'buefy/lib/buefy.css'
 
 Vue.config.productionTip = false
@@ -27,8 +28,9 @@ const app = new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   template: '<App/>',
   components: { App }
 })
 
-export {app, router, store}
+export {app, router, store, i18n}
