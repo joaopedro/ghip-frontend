@@ -3,8 +3,8 @@
     <div class="hero-body">
       <div class="container has-text-centered">
         <div class="column is-4 is-offset-4">
-          <h3 class="title has-text-white">Login</h3>
-          <p class="subtitle has-text-white">Please login to proceed.</p>
+          <h3 class="title has-text-white">{{$t("login.login")}}</h3>
+          <p class="subtitle has-text-white">{{$t("login.loginToProceed")}}</p>
           <div class="box">
             <figure class="avatar">
               <img src="../assets/logo.png">
@@ -12,30 +12,30 @@
             <form>
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="email" placeholder="Your Email" autofocus=""
+                  <input class="input is-large" type="email" :placeholder="$t('login.yourEmail')" autofocus=""
                     v-model="username" v-on:keydown.enter.prevent='login'>
                 </div>
               </div>
 
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="password" placeholder="Your Password"
+                  <input class="input is-large" type="password" :placeholder="$t('login.yourPassword')"
                     v-model="password" v-on:keydown.enter.prevent='login'>
                 </div>
               </div>
               <div class="field">
                 <label class="checkbox">
                   <input type="checkbox">
-                  Remember me
+                  {{$t("login.rememberMe")}}
                 </label>
               </div>
               <button type="submit" class="is-hidden" ></button>
-              <a class="button is-block is-info is-large" v-on:click="login()">Login</a>
+              <a class="button is-block is-info is-large" v-on:click="login()">{{$t("login.login")}}</a>
             </form>
           </div>
           <p class="has-text-white">
-            <a href="../">Forgot Password</a> &nbsp;·&nbsp;
-            <a href="../">Need Help?</a>
+            <a href="../">{{$t("login.forgotPassword")}}</a> &nbsp;·&nbsp;
+            <a href="../">{{$t("login.help")}}</a>
           </p>
         </div>
       </div>

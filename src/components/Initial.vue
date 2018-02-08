@@ -2,20 +2,20 @@
   <div class="container has-text-centered">
     <div class="column is-6 is-offset-3">
       <h1 class="title">
-        Coming Soon
+        {{$t("startPage.commingSoon")}}
       </h1>
       <h2 class="subtitle">
-        {{ msg }}
+        {{ $t("startPage.tempText") }}
       </h2>
       <div class="box">
 
         <div class="field is-grouped">
           <p class="control is-expanded">
-            <input class="input" type="text" placeholder="Enter your email">
+            <input class="input" type="text" :placeholder="$t('startPage.enterYourEmail')">
           </p>
           <p class="control">
             <a class="button is-info">
-              Notify Me
+              {{$t("startPage.notifyMe")}}
             </a>
           </p>
         </div>
@@ -23,15 +23,3 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'Initial',
-  data () {
-    return {
-      msg: 'This will be the best software to manage Geriatric Home and Health Care facilities. Leave your contact information below to keep informed (this does nothing actually).'
-    }
-  }
-}
-</script>
-

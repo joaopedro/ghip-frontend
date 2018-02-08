@@ -1,4 +1,57 @@
 {
+  "login": {
+    "login": "Entrar",
+    "loginToProceed": "Entrar para prosseguir",
+    "yourEmail": "Email",
+    "yourPassword": "Palavra-passe",
+    "rememberMe": "Lembrar-se de mim neste computador",
+    "forgotPassword": "esqueceu-se da palavra-passe?",
+    "help": "Ajuda"
+  },
+  "header": {
+    "home": "Inicio",
+    "accessManagement": "Gestão de Acessos",
+    "userMenu": {
+      "details": "Detalhes",
+      "logout": "Sair"
+    }
+  },
+  "startPage": {
+    "commingSoon": "Em Breve",
+    "tempText": "Este será o melhor software para gerir instalações geriátricas de cuidados domésticos e de saúde. Deixe as suas informações de contato abaixo para se manter informado (Na realidade não faz nada).",
+    "notifyMe": "Notificar-me",
+    "enterYourEmail": "Email"
+  },
+  "accessManagement": {
+    "user": {
+      "shortDescription": "Utilizador | Utilizadores",
+      "longDescription": "Utilizador Aplicacional | Utilizadores Aplicacionais",
+      "new": "Novo",
+      "username": "Utilizador",
+      "email": "Email",
+      "name": "Nome",
+      "lang": "Linguagem",
+      "comment": "Comentário"
+    },
+    "role": {
+      "shortDescription": "Função | Funções",
+      "longDescription": "Função | Funções",
+      "new": "Nova",
+      "id": "Id",
+      "name": "Nome"
+    },
+    "asset": {
+      "shortDescription": "Ativo | Ativos",
+      "longDescription": "Ativo | Ativo",
+      "id": "Id",
+      "name": "Nome",
+      "read": "Leitura",
+      "write": "Escrita",
+      "delete": "Apagar",
+      "permission": "Permissão | Permissões",
+      "selectAsset": "Selecione um Activo"
+    }
+  },
   "message": {
     "hello": "Olá Mundo",
     "hello123": "Olá",

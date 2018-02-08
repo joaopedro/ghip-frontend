@@ -15,10 +15,10 @@
           <div id='navbarMenu' class='navbar-menu'>
             <div class='navbar-end'>
               <router-link to='/init' class='navbar-item' exact>
-                Home
+                {{$t("header.home")}}
               </router-link>
               <router-link to='/accessmanagement' class='navbar-item'>
-                Access Management
+                {{$t("header.accessManagement")}}
               </router-link>
                 <span class='navbar-item'>
                   <div class="dropdown">
@@ -38,11 +38,11 @@
                     <div class='dropdown-menu' id='dropdown-menu' role='menu'>
                       <div class='dropdown-content '>
                         <router-link to='/userInfo' class='dropdown-item has-text-black'>
-                          Details
+                          {{$t("header.userMenu.details")}}
                         </router-link>
                         <hr class='dropdown-divider'>
                         <a class='dropdown-item has-text-black' v-on:click='logout()'>
-                          Logout
+                          {{$t("header.userMenu.logout")}}
                         </a>
                       </div>
                     </div>

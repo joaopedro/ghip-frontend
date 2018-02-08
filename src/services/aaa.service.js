@@ -32,6 +32,7 @@ const aaaService = {
     })
   },
   getUser (username) {
+    alert(process.env.PORT)
     return new Promise((resolve, reject) => {
       axios.get('/users/' + encodeURI(username))
         .then(response => {

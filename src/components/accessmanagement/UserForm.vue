@@ -59,6 +59,14 @@
           </b-taginput>
         </b-field>
         <b-field>
+          <b-select placeholder="Prefered Language"
+              v-model="user.lang" required>
+            <option value="pt">Portugues</option>
+            <option value="en">English</option>
+            <option value="jp">Japonese</option>
+          </b-select>
+        </b-field>
+        <b-field>
           <b-input type="textarea"
             v-model="user.comment"
               maxlength="100"
@@ -86,6 +94,7 @@
           email: '',
           username: '',
           password: '',
+          lang: '',
           passwordConfirmation: '',
           authorities: [],
           comment: ''
