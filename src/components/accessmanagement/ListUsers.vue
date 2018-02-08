@@ -2,13 +2,13 @@
   <div class="container">
     <div >
       <h2 class="title">
-        Application Users
+        {{ $tc('accessManagement.user.longDescription', 2) }}
       </h2>
       <button class="button is-primary is-medium"
             @click="isUserModalActive = true">
         <b-icon icon="account-plus"
                 size="is-small"></b-icon>
-        <span>New</span>
+        <span>{{$t('common.new')}}</span>
       </button>
       <b-modal :active.sync="isUserModalActive" @loadUsers='loadUsers'>
         <modal-form v-bind="formProps"></modal-form>
@@ -23,25 +23,29 @@
         default-sort="email">
 
         <template slot-scope="user">
-          <b-table-column field="username" label="Username" sortable>
+          <b-table-column field="username" :label="$t('accessManagement.user.username')" sortable>
             {{ user.row.username}}
           </b-table-column>
 
-          <b-table-column field="email" label="Email" sortable>
+          <b-table-column field="email" :label="$t('accessManagement.user.email')" sortable>
             {{ user.row.email}}
           </b-table-column>
 
-          <b-table-column field="name" label="Name" sortable>
+          <b-table-column field="name" :label="$t('common.name')" sortable>
             {{ user.row.name }}
           </b-table-column>
 
-          <b-table-column field="roles" label="Roles" >
+          <b-table-column field="language" :label="$t('accessManagement.user.lang')" sortable>
+            {{ user.row.lang }}
+          </b-table-column>
+
+          <b-table-column field="roles" :label="$tc('accessManagement.role.shortDescription',2)" >
             <div v-for="auth of user.row.authorities" v-bind:key="auth.name">
               {{auth.name}}&nbsp;
             </div>
           </b-table-column>
 
-          <b-table-column field="comment" label="Comment">
+          <b-table-column field="comment" :label="$t('accessManagement.user.comment')">
             {{ user.row.comment }}
           </b-table-column>
         </template>

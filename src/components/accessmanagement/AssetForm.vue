@@ -2,20 +2,20 @@
   <form action="">
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Asset</p>
+        <p class="modal-card-title">{{$tc('accessManagement.asset.longDescription', 1)}}</p>
       </header>
       <section class="modal-card-body">
         <b-field>
           <b-input
             v-model="asset.name"
-            placeholder="Name"
+            :placeholder="$t('common.name')"
             required>
           </b-input>
         </b-field>
       </section>
       <footer class="modal-card-foot">
-        <button class="button" type="button" @click="$parent.close()">Close</button>
-        <button class="create-button button is-primary" @click="createAsset">Create</button>
+        <button class="button" type="button" @click="$parent.close()">{{$t('common.close')}}</button>
+        <button class="create-button button is-primary" @click="createAsset">{{$t('common.create')}}</button>
       </footer>
     </div>
   </form>

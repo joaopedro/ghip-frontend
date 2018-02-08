@@ -1,4 +1,12 @@
 {
+  "common": {
+    "id": "イド",
+    "name": "名",
+    "new": "新しい",
+    "close": "閉じる",
+    "create": "作成する",
+    "add": "追加"
+  },
   "login": {
     "login": "ログイン",
     "loginToProceed": "続行するにはログインしてください",
@@ -26,18 +34,17 @@
     "user": {
       "shortDescription": "ユーザー | ユーザー",
       "longDescription": "アプリケーションユーザ | アプリケーションユーザー",
-      "new": "新しい",
       "username": "ユーザー名",
       "email": "Eメール",
-      "name": "名",
-      "roles": "役割",
       "lang": "言語",
-      "comment": "コメント"
+      "comment": "コメント",
+      "password": "あなたのパスワード",
+      "passwordConfirmation": "パスワード確認",
+      "addRole": "役割を追加する"
     },
     "role": {
       "shortDescription": "役割 | 役割",
       "longDescription": "役割 | 役割",
-      "new": "新しい",
       "id": "イド",
       "name": "名"
     },
@@ -50,7 +57,8 @@
       "write": "書きます",
       "delete": "書きます",
       "permission": "許可 | アクセス許可",
-      "selectAsset": "資産の選択"
+      "selectAsset": "資産の選択",
+      "notAssociated": "まだアソシエートされていないアセット"
     }
   },
   "message": {

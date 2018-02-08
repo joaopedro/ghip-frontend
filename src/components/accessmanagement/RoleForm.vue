@@ -2,13 +2,13 @@
   <form action="">
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Role</p>
+        <p class="modal-card-title">{{$tc('accessManagement.role.shortDescription',1)}}</p>
       </header>
       <section class="modal-card-body">
         <b-field>
           <b-input
             v-model="role.name"
-            placeholder="Name"
+            :placeholder="$t('common.name')"
             required>
           </b-input>
         </b-field>
@@ -16,11 +16,11 @@
           <div class="button is-dark" @click="toggleAssetFormClicked()">
               <b-icon icon="plus" v-if="!showAssetForm"></b-icon>
               <b-icon icon="minus" v-if="showAssetForm"></b-icon>
-              <span>Asset</span>
+              <span>{{$tc('accessManagement.asset.shortDescription', 1)}}</span>
           </div>
         </b-field>
         <b-field grouped v-if="showAssetForm">
-          <b-select placeholder="Select an Asset" v-model="assetId">
+          <b-select :placeholder="$t('accessManagement.asset.selectAsset')" v-model="assetId">
             <option
               v-for="asset in availableAssets"
               :value="asset.id"
@@ -33,21 +33,21 @@
                 native-value="Read"
                 type="is-success">
                 <b-icon icon="check"></b-icon>
-                <span>Read</span>
+                <span>{{$t('accessManagement.asset.read')}}</span>
             </b-checkbox-button>
           <b-checkbox-button v-model="permissions"
                 native-value="Write"
                 type="is-success">
                 <b-icon icon="check"></b-icon>
-                <span>Write</span>
+                <span>{{$t('accessManagement.asset.write')}}</span>
             </b-checkbox-button>
           <b-checkbox-button v-model="permissions"
                 native-value="Delete"
                 type="is-success">
                 <b-icon icon="check"></b-icon>
-                <span>Delete</span>
+                <span>{{$t('accessManagement.asset.delete')}}</span>
           </b-checkbox-button>
-          <button class="button is-info" type="button" @click='addAsset()'>Add</button>
+          <button class="button is-info" type="button" @click='addAsset()'>{{$t('common.add')}}</button>
         </b-field>
         <b-table
           :data="role.assetAuthorities"
@@ -66,21 +66,21 @@
 
             <b-table-column field="permissions" label="Permissions" sortable>
               <span class="tag is-success" v-if="assetAuthority.row.read == true">
-                Read
+                {{$t('accessManagement.asset.read')}}
               </span>
               <span class="tag is-success" v-if="assetAuthority.row.write == true">
-                Write
+                {{$t('accessManagement.asset.write')}}
               </span>
               <span class="tag is-success" v-if="assetAuthority.row.delete == true">
-                Delete
+                {{$t('accessManagement.asset.delete')}}
               </span>
             </b-table-column>
           </template>
         </b-table>
       </section>
       <footer class="modal-card-foot">
-        <button class="button" type="button" @click="$parent.close()">Close</button>
-        <button class="create-button button is-primary" @click="createRole">Create</button>
+        <button class="button" type="button" @click="$parent.close()">{{$t('common.close')}}</button>
+        <button class="create-button button is-primary" @click="createRole">{{$t('common.create')}}</button>
       </footer>
     </div>
   </form>

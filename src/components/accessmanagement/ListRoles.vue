@@ -2,11 +2,11 @@
   <div class="container">
     <div >
       <h2 class="title">
-        Roles
+        {{$tc('accessManagement.role.longDescription', 2)}}
       </h2>
       <button class="button is-primary is-medium"
             @click="isRoleModalActive = true">
-        <span>New Role</span>
+        <span>{{$t('common.new')}} {{$tc('accessManagement.role.shortDescription', 1)}}</span>
       </button>
       <b-modal :active.sync="isRoleModalActive" @loadRoles='loadRoles'>
         <modal-form />
@@ -22,24 +22,24 @@
         detailed>
 
         <template slot-scope="role">
-          <b-table-column field="id" label="Id" sortable>
+          <b-table-column field="id" :label="$t('common.id')" sortable>
             {{ role.row.id}}
           </b-table-column>
 
-          <b-table-column field="name" label="Name" sortable>
+          <b-table-column field="name" :label="$t('common.name')" sortable>
             {{ role.row.name}}
           </b-table-column>
         </template>
         <template slot="detail" slot-scope="role">
           <div class="content">
-            <p v-if="role.row.assetAuthorities.length == 0">No Asset Associated yet</p>
+            <p v-if="role.row.assetAuthorities.length == 0">{{$t('accessManagement.asset.notAssociated')}}</p>
             <p v-for="assetAuthority in role.row.assetAuthorities" v-bind:key="assetAuthority.pk.asset.id">
-              <strong>Asset: </strong>
+              <strong>{{$tc('accessManagement.asset.shortDescription',1)}}: </strong>
               <small>{{ assetAuthority.pk.asset.name }}</small>
-              <strong>Permissions: </strong>
-              <small>Read: </small><small>{{ assetAuthority.read }}</small>
-              <small>Write: </small><small>{{ assetAuthority.write }}</small>
-              <small>Delete: </small><small>{{ assetAuthority.delete }}</small>
+              <strong>{{$tc('accessManagement.asset.permission', 2)}}: </strong>
+              <small>{{$t('accessManagement.asset.read')}}: </small><small>{{ assetAuthority.read }}</small>
+              <small>{{$t('accessManagement.asset.write')}}: </small><small>{{ assetAuthority.write }}</small>
+              <small>{{$t('accessManagement.asset.delete')}}: </small><small>{{ assetAuthority.delete }}</small>
             </p>
           </div>
         </template>

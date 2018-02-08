@@ -1,4 +1,12 @@
 {
+  "common": {
+    "id": "Id",
+    "name": "Nome",
+    "new": "Novo",
+    "close": "Fechar",
+    "create": "Create",
+    "add": "Adicionar"
+  },
   "login": {
     "login": "Entrar",
     "loginToProceed": "Entrar para prosseguir",
@@ -26,30 +34,27 @@
     "user": {
       "shortDescription": "Utilizador | Utilizadores",
       "longDescription": "Utilizador Aplicacional | Utilizadores Aplicacionais",
-      "new": "Novo",
       "username": "Utilizador",
       "email": "Email",
-      "name": "Nome",
       "lang": "Linguagem",
-      "comment": "Comentário"
+      "comment": "Comentário",
+      "password": "Palavra-passe",
+      "passwordConfirmation": "Confirmação da Palavra-passe",
+      "addRole": "Selectionar Role"
     },
     "role": {
       "shortDescription": "Função | Funções",
-      "longDescription": "Função | Funções",
-      "new": "Nova",
-      "id": "Id",
-      "name": "Nome"
+      "longDescription": "Função | Funções"
     },
     "asset": {
       "shortDescription": "Ativo | Ativos",
       "longDescription": "Ativo | Ativo",
-      "id": "Id",
-      "name": "Nome",
       "read": "Leitura",
       "write": "Escrita",
       "delete": "Apagar",
       "permission": "Permissão | Permissões",
-      "selectAsset": "Selecione um Activo"
+      "selectAsset": "Selecione um Activo",
+      "notAssociated": "Sem Ativos associado"
     }
   },
   "message": {

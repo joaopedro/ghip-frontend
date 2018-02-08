@@ -1,4 +1,12 @@
 {
+  "common": {
+    "id": "Id",
+    "name": "Name",
+    "new": "New",
+    "close": "Close",
+    "create": "Create",
+    "add": "Add"
+  },
   "login": {
     "login": "Login",
     "loginToProceed": "Please login to proceed",
@@ -26,31 +34,27 @@
     "user": {
       "shortDescription": "User | Users",
       "longDescription": "Application User | Application Users",
-      "new": "New",
       "username": "Username",
       "email": "Email",
-      "name": "Name",
-      "roles": "Roles",
-      "lang": "language",
-      "comment": "Comment"
+      "lang": "Language",
+      "comment": "Comment",
+      "password": "Your Password",
+      "passwordConfirmation": "Confirm your password",
+      "addRole": "Add Role"
     },
     "role": {
       "shortDescription": "Role | Roles",
-      "longDescription": "Role | Roles",
-      "new": "New",
-      "id": "Id",
-      "name": "Name"
+      "longDescription": "Role | Roles"
     },
     "asset": {
       "shortDescription": "Asset | Assets",
       "longDescription": "Asset | Assets",
-      "id": "Id",
-      "name": "Name",
       "read": "Read",
       "write": "Write",
       "delete": "Delete",
       "permission": "Permission | Permissions",
-      "selectAsset": "Select an Asset"
+      "selectAsset": "Select an Asset",
+      "notAssociated": "No Asset Associated yet"
     }
   },
   "message": {

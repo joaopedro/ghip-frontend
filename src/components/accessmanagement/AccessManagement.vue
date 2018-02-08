@@ -2,9 +2,9 @@
   <div>
       <div class="tabs is-boxed">
         <ul>
-          <li :class="{'is-active' : isActiveTab(0)}"><a @click="activeTab = 0">Users</a></li>
-          <li :class="{'is-active' : isActiveTab(1)}"><a @click="activeTab = 1">Roles</a></li>
-          <li :class="{'is-active' : isActiveTab(2)}"><a @click="activeTab = 2">Assets</a></li>
+          <li :class="{'is-active' : isActiveTab(0)}"><a @click="activeTab = 0">{{$tc('accessManagement.user.shortDescription', 2)}}</a></li>
+          <li :class="{'is-active' : isActiveTab(1)}"><a @click="activeTab = 1">{{$tc('accessManagement.role.shortDescription', 2)}}</a></li>
+          <li :class="{'is-active' : isActiveTab(2)}"><a @click="activeTab = 2">{{$tc('accessManagement.asset.shortDescription', 2)}}</a></li>
         </ul>
       </div>
       <div class="tab-panels">

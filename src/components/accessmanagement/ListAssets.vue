@@ -2,11 +2,11 @@
   <div class="container">
     <div >
       <h2 class="title">
-        Assets
+        {{$tc('accessManagement.asset.longDescription', 2)}}
       </h2>
       <button class="button is-primary is-medium"
             @click="isAssetModalActive = true">
-        <span>New Asset</span>
+        <span>{{$t('common.new')}} {{$tc('accessManagement.asset.shortDescription', 1)}}</span>
       </button>
       <b-modal :active.sync="isAssetModalActive" @loadAssets='loadAssets'>
         <modal-form v-bind="formProps"></modal-form>
@@ -21,11 +21,11 @@
         default-sort="id">
 
         <template slot-scope="asset">
-          <b-table-column field="id" label="Id" sortable>
+          <b-table-column field="id" :label="$t('common.id')" sortable>
             {{ asset.row.id}}
           </b-table-column>
 
-          <b-table-column field="name" label="Name" sortable>
+          <b-table-column field="name" :label="$t('common.name')" sortable>
             {{ asset.row.name}}
           </b-table-column>
         </template>
