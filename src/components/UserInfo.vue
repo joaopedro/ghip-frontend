@@ -20,7 +20,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import appService from '@/app.service'
+import aaaService from '@/services/aaa.service'
 import {loadLanguageAsync, i18n} from '@/setup/i18n-setup.js'
 export default {
   name: 'UserInfo',
@@ -36,7 +36,7 @@ export default {
   methods: {
     loadUser () {
       this.loading = true
-      appService.getUser(this.userUsername).then((data) => {
+      aaaService.getUser(this.userUsername).then((data) => {
         console.debug(data)
         this.user = data
       }).catch((data) => {

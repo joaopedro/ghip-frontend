@@ -87,7 +87,7 @@
 </template>
 
 <script>
-  import appService from '@/app.service'
+  import aaaService from '@/services/aaa.service'
   import _ from 'lodash'
 
   export default {
@@ -111,7 +111,7 @@
         console.debug(this.role)
         var button = document.querySelector('.create-button')
         button.classList.toggle('is-loading')
-        appService.createRole(this.role)
+        aaaService.createRole(this.role)
         .then(() => {
           button.classList.toggle('is-loading')
           this.$parent.$emit('loadRoles')
@@ -126,7 +126,7 @@
       },
       loadAssets () {
         this.loading = true
-        appService.getAssets().then((data) => {
+        aaaService.getAssets().then((data) => {
           this.availableAssets = []
           data.forEach((item) => this.availableAssets.push(item))
         }).catch((data) => {

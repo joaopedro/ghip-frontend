@@ -15,7 +15,7 @@ if (typeof window !== 'undefined') {
   var currentDate = new Date()
 
   if (expiresAt !== null && expiresAt > currentDate) {
-    store.dispatch('parseToken', window.localStorage.getItem('acessToken'))
+    store.dispatch('parseToken', window.localStorage.getItem('accessToken'))
   }
 }
 

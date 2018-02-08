@@ -12,7 +12,7 @@ axios.interceptors.request.use(function (config) {
   if (window === 'undefined') {
     return config
   }
-  const token = window.localStorage.getItem('acessToken')
+  const token = window.localStorage.getItem('accessToken')
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
@@ -20,7 +20,7 @@ axios.interceptors.request.use(function (config) {
   return config
 })
 
-const appService = {
+const aaaService = {
   getUsers () {
     return new Promise((resolve, reject) => {
       axios.get('/users')
@@ -108,4 +108,4 @@ const appService = {
   }
 }
 
-export default appService
+export default aaaService

@@ -75,7 +75,7 @@
 </template>
 
 <script>
-  import appService from '@/app.service'
+  import aaaService from '@/services/aaa.service'
 
   export default {
     name: 'UserForm',
@@ -97,7 +97,7 @@
     methods: {
       loadRoles () {
         this.loading = true
-        appService.getRoles().then((data) => {
+        aaaService.getRoles().then((data) => {
           this.roles = []
           data.forEach((role) => this.availableRoles.push(role))
         }).catch((data) => {
@@ -123,7 +123,7 @@
         console.debug(this.user)
         var button = document.querySelector('.create-button')
         button.classList.toggle('is-loading')
-        appService.createUser(this.user)
+        aaaService.createUser(this.user)
         .then(() => {
           button.classList.toggle('is-loading')
           this.$parent.$emit('loadUsers')

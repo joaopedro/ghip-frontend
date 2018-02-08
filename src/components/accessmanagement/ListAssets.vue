@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import appService from '@/app.service'
+import aaaService from '@/services/aaa.service'
 import AssetForm from './AssetForm'
 
 export default {
@@ -62,7 +62,7 @@ export default {
   methods: {
     loadAssets () {
       this.loading = true
-      appService.getAssets().then((data) => {
+      aaaService.getAssets().then((data) => {
         this.assets = []
         data.forEach((asset) => this.assets.push(asset))
       }).catch((data) => {

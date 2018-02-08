@@ -65,6 +65,7 @@ export default {
           this.password = ''
           this.$router.replace('/init')
         }).catch((data) => {
+          console.debug(data)
           button.classList.toggle('is-loading')
           this.$toast.open({
             message: 'Could not Login!',

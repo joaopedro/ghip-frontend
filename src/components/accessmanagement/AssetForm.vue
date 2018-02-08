@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import appService from '@/app.service'
+  import aaaService from '@/services/aaa.service'
 
   export default {
     name: 'AssetForm',
@@ -39,7 +39,7 @@
         console.debug(this.asset)
         var button = document.querySelector('.create-button')
         button.classList.toggle('is-loading')
-        appService.createAsset(this.asset)
+        aaaService.createAsset(this.asset)
         .then(() => {
           button.classList.toggle('is-loading')
           this.$parent.$emit('loadAssets')

@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import appService from '@/app.service'
+import aaaService from '@/services/aaa.service'
 import RoleForm from './RoleForm'
 
 export default {
@@ -72,7 +72,7 @@ export default {
   methods: {
     loadRoles () {
       this.loading = true
-      appService.getRoles().then((data) => {
+      aaaService.getRoles().then((data) => {
         this.roles = []
         data.forEach((role) => this.roles.push(role))
       }).catch((data) => {

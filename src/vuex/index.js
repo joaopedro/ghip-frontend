@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import appService from '../app.service'
+import aaaService from '@/services/aaa.service'
 import { router } from '@/main'
 import decode from 'jwt-decode'
 
@@ -37,7 +37,7 @@ const store = new Vuex.Store({
     },
     login (context, credentials) {
       return new Promise((resolve, reject) => {
-        appService.login(credentials)
+        aaaService.login(credentials)
           .then((data) => {
             context.commit('login', data)
             resolve()
@@ -54,19 +54,19 @@ const store = new Vuex.Store({
   mutations: {
     logout (state, tokenId) {
       if (typeof window !== 'undefined') {
-        window.localStorage.removeItem('acessToken')
+        window.localStorage.removeItem('accessToken')
         window.localStorage.removeItem('expiresIn')
-        appService.revokeToken(tokenId)
+        aaaService.revokeToken(tokenId)
         router.push('/login')
       }
       state.isAuthenticated = false
     },
     login (state, token) {
       if (typeof window !== 'undefined') {
-        window.localStorage.setItem('acessToken', token.acessToken)
+        window.localStorage.setItem('accessToken', token.accessToken)
         window.localStorage.setItem('expiresIn', token.expiresIn)
       }
-      state.decodedToken = decode(token.acessToken)
+      state.decodedToken = decode(token.accessToken)
       state.isAuthenticated = true
     },
     parseToken (state, token) {

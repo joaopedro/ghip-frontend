@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import appService from '@/app.service'
+import aaaService from '@/services/aaa.service'
 import UserForm from './UserForm'
 
 export default {
@@ -78,7 +78,7 @@ export default {
   methods: {
     loadUsers () {
       this.loading = true
-      appService.getUsers().then((data) => {
+      aaaService.getUsers().then((data) => {
         this.users = []
         data.forEach((item) => this.users.push(item))
       }).catch((data) => {
